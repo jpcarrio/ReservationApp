@@ -1,0 +1,69 @@
+<div class="content" role="main">
+    <div style="padding: 25px 0px; background-color:#fefefe;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="text-danger">{{title}}</h2>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="col-md-4 align-items-center">
+                    <button class="btn btn-secondary" routerLink="/">RESERVATION LIST</button>
+                    <button class="btn btn-secondary" routerLink="/contact-list">CONTACT LIST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 10px; background-color:#efefef">
+    <div class="container" style="background-color: white;">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                <div class="row col-md-12">                    
+                    <div class="col-md-4">&nbsp;</div>
+                    <div class="center col-md-4">
+                        <div class="input-group">
+                            <span><i class="bi-person"></i></span>
+                            <input type="hidden" name="Id" [(ngModel)]="cid" ngModel #contactId="ngModel">
+                            <input type="text" class="form-control" placeholder="Contact Name" name="contactName"
+                            ngModel #contactName="ngModel" [(ngModel)]="cName"  required maxlength="50" /> 
+                             
+                        </div>                        
+    
+                        <div class="input-group" >
+                            <span><i class="bi-globe"></i></span>                               
+
+                            <select name="contactType" required [(ngModel)]="cType">
+                                <option *ngFor="let opt of typeList" [value]="opt.id" [selected]="opt.id == cType">{{opt.typeName}}</option>
+                            </select>
+
+                        </div>                    
+                        
+                        <div class="input-group">
+                            <span><i class="bi-telephone"></i></span>
+                            <input type="text" class="form-control" placeholder="Phone" name="contactPhone" 
+                            ngModel #contactPhone="ngModel" [(ngModel)]="cPhone"/>
+                        </div>
+                        
+                        <div class="input-group">
+                            <span><i class="bi-calendar3"></i></span>
+                            <input type="date" class="form-control" placeholder="Birth Date" name="birthday" required 
+                            ngModel [(ngModel)]="cBirthday" value="{{cBirthday}}" />
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-danger" [disabled]="!contactForm.valid">SEND</button>
+                        
+    
+                    </div>
+                    <div class="col-md-4">&nbsp;</div>
+
+                </div>                
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="content" role="main">
+    <div style="padding: 25px 0px; background-color:#fefefe;">
+      <div class="container">
+        <div class="row" >
+          <div class="col-md-4">
+            <h2 class="text-danger">Contact List</h2>
+          </div>
+          <div class="col-md-4">
+            <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div class="col-md-4 right">
+            <button class="btn btn-secondary" routerLink="/" >RESERVATION LIST</button>
+            <button class="btn btn-secondary" routerLink="/contact-add" >ADD CONTACT</button>
+          </div>
+        </div>
+      </div> 
+    </div>  
+  </div>
+  
+  <div style="padding: 10px; background-color:#efefef">
+      <div class="container" style="background-color: white;">   
+          <div class="card-body">
+              <table class="table table-responsive table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Contact Name</th>
+                      <th>Contact Type</th> 
+                      <th>Contact Phone</th>
+                      <th>Birth Day</th>
+                      <th></th>                    
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let contact of list" id="row-{{contact.id}}">
+                      <td>{{contact.id}}</td>
+                      <td>{{contact.contactName}}</td>
+                      <td>{{contact.contactType}}</td>
+                      <td>{{contact.contactPhone}}</td>
+                      <td>{{contact.birthday | date}}</td>
+                      <td>
+                        <button class="btn btn-primary" (click)="populateData(contact)"><i class="bi-pencil"></i></button>
+                        <button class="btn btn-danger" (click)="onDelete(contact.id)"><i class="bi-trash"></i></button>
+                      </td>                    
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>    
+  </div>

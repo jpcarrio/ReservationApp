@@ -1,0 +1,84 @@
+<div class="content" role="main">
+    <div style="padding: 25px 0px; background-color:#fefefe;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="text-danger">{{title}}</h2>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="col-md-4 align-items-center">
+                    <button class="btn btn-secondary" routerLink="/">RESERVATION LIST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 10px; background-color:#efefef">
+    <div class="container" style="background-color: white;">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(reservationForm)" #reservationForm="ngForm">
+                <div class="inline-group col-md-12">
+                    <div class="input-group">
+                        <span><i class="bi-person"></i></span>
+                        <input type="hidden" name="Id" [(ngModel)]="rid" ngModel #reservationId="ngModel">
+                        <input type="text" class="form-control" placeholder="Contact Name" name="contactName" ngModel (selectItem)="selectedItem($event)"
+                            #contactName="ngModel" [(ngModel)]="cName" [ngbTypeahead]="search" required maxlength="50" [disabled]="isEditing"/>
+
+                    </div>
+
+                    <div class="input-group">
+                        <span><i class="bi-globe"></i></span>
+
+                        <select name="contactType" required [(ngModel)]="cType" [disabled]="isEditing">
+                            <option value="0">Choose Contact Type...</option>
+                            <option *ngFor="let opt of typeList" [value]="opt.id" [selected]="opt.id == cType">{{opt.typeName}}</option>
+                        </select> 
+
+                    </div>
+
+                    <div class="input-group">
+                        <span><i class="bi-telephone"></i></span>
+                        <input type="text" class="form-control" placeholder="Phone" name="contactPhone" ngModel 
+                            #contactPhone="ngModel" [(ngModel)]="cPhone" [disabled]="isEditing" />
+                    </div>
+
+                    <div class="input-group">
+                        <span><i class="bi-calendar3"></i></span>
+                        <input type="date" class="form-control" placeholder="Birth Date" name="birthday" required
+                            ngModel [(ngModel)]="cBirthday" value="{{cBirthday}}" [disabled]="isEditing"/>
+                    </div>
+                </div>
+                <div class="final">
+                    <ckeditor data="<h1>Keep that Noise Down!</h1>"></ckeditor>
+                    
+                    <div class="clearfix">&nbsp;</div>
+
+                    <div class="inline-group col-md-12">
+                        <div class="input-group">
+                            <span><i class="bi-image-alt"></i></span>
+    
+                            <input type="text" class="form-control" placeholder="Reservation Place" name="reservationPlace" ngModel
+                                #reservationPlace="ngModel" [(ngModel)]="rPlace" required maxlength="50" />
+    
+                        </div>
+                        <div class="input-group">
+                            <span><i class="bi-calendar-check"></i></span>
+    
+                            <input type="date" class="form-control" placeholder="Reservation Date" name="reservationDate" ngModel
+                                #reservationDate="ngModel" [(ngModel)]="rDate" required maxlength="50" />
+    
+                        </div>
+                    </div>                    
+
+                    <button type="submit" class="btn btn-danger" [disabled]="!reservationForm.valid">SEND</button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

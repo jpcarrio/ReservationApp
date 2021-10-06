@@ -1,0 +1,9 @@
+  button {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+p.rdata {
+  font-size: 14px; 
+  color: #aaa;
+  line-height: 12px;
+}

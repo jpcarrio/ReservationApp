@@ -1,0 +1,53 @@
+<div class="content" role="main">
+  <div style="padding: 25px 0px; background-color:#fefefe;">
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-4">
+          <h2 class="text-danger">Reservations List</h2>
+        </div>
+        <div class="col-md-4">
+          <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-md-4 right">
+          <button class="btn btn-secondary" routerLink="/reservation-add" >CREATE RESERVATION</button>
+          <button class="btn btn-secondary" routerLink="/contact-list" >CONTACT LIST</button>
+        </div>
+      </div>
+    </div> 
+  </div>  
+</div>
+
+<div style="padding: 10px; background-color:#efefef">
+    <div class="container" style="background-color: white;">   
+        <div class="card-body">
+            <table class="table table-responsive table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                <thead>
+                <tr>
+                  <th></th>                    
+                    <th>Reservation</th>                    
+                    <th>Favorite</th>
+                    <th></th>                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let reservation of list" id="row-{{reservation.id}}">  
+                    <td><img src="../../../../assets/img/thumb.jpg" width="64"></td>                  
+                    <td>                      
+                      <h5>{{reservation.reservationPlace}}</h5>
+                      <p class="rdata">{{reservation.reservationDate | date:'EEEE d MMMM YYYY' }} at {{reservation.reservationDate | date:'h:m a'}} </p>
+                    </td>                
+                       
+                    <td>
+                      Add Favorites 
+                      <i [ngStyle]="{color: reservation.favorite?'red': 'gray'}" class="bi-heart-fill" ></i>                      
+                    </td>                                   
+                  <td>
+                    <button class="btn btn-secondary" (click)="populateData(reservation)">EDIT</button>                    
+                  </td>        
+                </tr>    
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>
